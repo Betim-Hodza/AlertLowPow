@@ -9,4 +9,5 @@ import Foundation
 
 struct LowPowModel {
     var lowPowerMode = false
+    var showingAlert = false
 }

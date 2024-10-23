@@ -36,9 +36,11 @@ class LowPowViewModel: ObservableObject {
             guard ProcessInfo.processInfo.isLowPowerModeEnabled == true
             else {
                 self.lowPowModel.lowPowerMode = false
+                self.lowPowModel.showingAlert = false
                 return
             }
             self.lowPowModel.lowPowerMode = true
+            self.lowPowModel.showingAlert = true
         }
         
     }
