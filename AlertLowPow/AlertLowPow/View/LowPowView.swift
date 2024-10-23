@@ -16,7 +16,6 @@ struct LowPowView: View {
         VStack {
             Text("\(lowPowViewModel.lowPowModel.lowPowerMode.description)")
             Button("Toggle"){
-                lowPowViewModel.getLowPowStatus()
                 if (lowPowViewModel.lowPowModel.lowPowerMode) {
                     showingAlert = true
                 }
