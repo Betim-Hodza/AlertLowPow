@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class LowPowViewModel: ObservableObject {
-    @Published var lowPowModel = LowPowModel()
+    @Published var lowPowModel = LowPowModel( )
     
     func toggle() {
         if (lowPowModel.lowPowerMode == true) {
@@ -20,8 +20,12 @@ class LowPowViewModel: ObservableObject {
         }
     }
     
-    @objc func powerStateChanged(_ notification: Notification) {
-        let lowerPowerEnabled = ProcessInfo.processInfo.isLowPowerModeEnabled
-        toggle()
+    func getLowPowStatus() {
+        guard ProcessInfo.processInfo.isLowPowerModeEnabled == true
+        else {
+            lowPowModel.lowPowerMode = false
+            return
+        }
+        lowPowModel.lowPowerMode = true
     }
 }
