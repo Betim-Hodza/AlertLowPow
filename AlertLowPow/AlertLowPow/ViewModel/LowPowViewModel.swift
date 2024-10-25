@@ -12,7 +12,7 @@ class LowPowViewModel: ObservableObject {
     @Published var lowPowModel = LowPowModel( )
     
     init(lowPowModel: LowPowModel = LowPowModel( )) {
-        print("initializing")
+//        print("initializing")
         self.lowPowModel = lowPowModel
         NotificationCenter.default.addObserver(
             self, selector: #selector(getLowPowStatus), name: NSNotification.Name.NSProcessInfoPowerStateDidChange,
@@ -21,7 +21,7 @@ class LowPowViewModel: ObservableObject {
     }
     
     func toggle() {
-        print("toggling")
+//        print("toggling")
         if (lowPowModel.lowPowerMode == true) {
             lowPowModel.lowPowerMode = false
         }
@@ -31,7 +31,7 @@ class LowPowViewModel: ObservableObject {
     }
     
     @objc func getLowPowStatus(_ notification: Notification) {
-        print("getting lowPowStatus")
+//        print("getting lowPowStatus")
         DispatchQueue.main.async {
             guard ProcessInfo.processInfo.isLowPowerModeEnabled == true
             else {
@@ -47,7 +47,7 @@ class LowPowViewModel: ObservableObject {
     
     // https://www.hackingwithswift.com/example-code/system/how-to-detect-low-power-mode-is-enabled
     func notificationPower() {
-        print("notificationPower")
+//        print("notificationPower")
         NotificationCenter.default.addObserver(
             self, selector: #selector(getLowPowStatus), name: NSNotification.Name.NSProcessInfoPowerStateDidChange,
             object: nil

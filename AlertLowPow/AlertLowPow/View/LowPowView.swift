@@ -14,14 +14,14 @@ struct LowPowView: View {
     
     var body: some View {
         VStack {
-            Text("\(lowPowViewModel.lowPowModel.lowPowerMode.description)")
-                .alert(isPresented: $lowPowViewModel.lowPowModel.showingAlert) {
-                Alert(title: Text("Low Power Mode on"), message: Text("Please turn it off"), dismissButton: .default(Text("Ok")))
+            if (lowPowViewModel.lowPowModel.lowPowerMode) {
+                Text("Low power Mode Enabled")
+                    .foregroundColor(.red)
+                    .alert(isPresented: $lowPowViewModel.lowPowModel.showingAlert) {
+                        Alert(title: Text("Low Power Mode on"), message: Text("Please turn it off"), dismissButton: .default(Text("Ok")))
+                    }
             }
         }
     }
 }
 
-#Preview {
-    LowPowView()
-}
